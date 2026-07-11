@@ -81,7 +81,7 @@ if (Test-Path $ManifestFile) {
     $Manifest[0].versions[0].checksum = $Hash
     $Manifest[0].versions[0].timestamp = $Timestamp
 
-    $Json = ConvertTo-Json -InputObject $Manifest -Depth 10
+    $Json = ConvertTo-Json -InputObject @($Manifest) -Depth 10
     [System.IO.File]::WriteAllText($ManifestFile, $Json, (New-Object System.Text.UTF8Encoding $false))
     Write-Host "Updated manifest.json with new checksum and version"
 }
